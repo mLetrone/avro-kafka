@@ -1,0 +1,12 @@
+{
+  "type": "record",
+  "namespace": "com.iris.poc.avrokafka.avro.model",
+  "name": "Order",
+  "version": "1",
+  "fields": [
+    { "name": "order_id", "type": "string", "doc": "Id of the order filed" },
+    { "name": "customer_id", "type": "string", "doc": "Id of the customer" },
+    { "name": "items", "type": "int", "doc": "Total number of items in the order" },
+    { "name": "price", "type": "float", "doc": "Total price of the order" }
+  ]
+}
