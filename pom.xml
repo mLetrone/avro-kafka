@@ -127,6 +127,9 @@
 				<configuration>
 					<sources>${project.basedir}/src/main/resources/sxd</sources>
 					<packageName>com.iris.poc.avrokafka.xsd2java</packageName>
+					<outputDirectory>${project.basedir}/src/main/java</outputDirectory>
+					<generateEpisode>false</generateEpisode>
+					<clearOutputDir>false</clearOutputDir>
 				</configuration>
 			</plugin>
 			<plugin>
