@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns="http://www.gk-software.com/schema/core/server/extension-map/map/map-1.0"
+  xmlns:tns="http://www.gk-software.com/schema/core/server/extension-map/map/map-1.0"
+  targetNamespace="http://www.gk-software.com/schema/core/server/extension-map/map/map-1.0"
+  elementFormDefault="qualified"
+>
+
+  <xs:element name="data-extension-map" type="dataExtensionMapType">
+    <xs:annotation>
+      <xs:documentation>
+        The predefined (default) element, which represents Extension data map.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:unique name="entryKeyUnique">
+      <xs:selector xpath="tns:entry"/>
+      <xs:field xpath="@key"/>
+    </xs:unique>
+  </xs:element>
+
+  <xs:complexType name="dataExtensionMapType">
+    <xs:annotation>
+      <xs:documentation>
+        This element type represents a Extension data map. The map can contains
+        extra data of specified data type. The data type is defined by "entry"
+        type attribute. The name and value of data extension is defined by
+        "entry" key and value attributes.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="entry" type="entryType" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="entryType">
+    <xs:annotation>
+      <xs:documentation>
+        Map entry definition. The map entry is defined by key, type and value.
+        All values are string values. The right type String conversion
+        (string->number, string->date ...) is delegated on application itself.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="key" type="xs:string" use="required"/>
+    <xs:attribute name="type" type="xs:string" use="required"/>
+    <xs:attribute name="value" type="xs:string" use="required"/>
+  </xs:complexType>
+
+</xs:schema>

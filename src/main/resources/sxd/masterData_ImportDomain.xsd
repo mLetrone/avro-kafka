@@ -1,0 +1,695 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns="http://www.gk-software.com/storeweaver/master_data/import_domain/2.2.0"
+  targetNamespace="http://www.gk-software.com/storeweaver/master_data/import_domain/2.2.0"
+  elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:attribute name="isNull" type="xs:boolean" default="false" />
+  <xs:complexType name="A_isNull_abstract" abstract="true">
+    <xs:attribute ref="isNull" />
+  </xs:complexType>
+  <xs:simpleType name="T_Address_NULLABLE">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="40" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_Address">
+    <xs:restriction base="T_Address_NULLABLE">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="T_Address_WITH_NULL_FLAG">
+    <xs:simpleContent>
+      <xs:extension base="T_Address_NULLABLE">
+        <xs:attribute ref="isNull" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="T_EmailAddress_NULLABLE">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="64" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_EmailAddress">
+    <xs:restriction base="T_EmailAddress_NULLABLE">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="T_EmailAddress_WITH_NULL_FLAG">
+    <xs:simpleContent>
+      <xs:extension base="T_EmailAddress_NULLABLE">
+        <xs:attribute ref="isNull" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="T_EmployeeID">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="20" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_Identity">
+    <xs:annotation>
+      <xs:documentation>numerical ID</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:long">
+      <xs:totalDigits value="18" />
+      <xs:fractionDigits value="0" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_IdentityAlphaNumeric40_NULLABLE">
+    <xs:annotation>
+      <xs:documentation>String-ID, length 40</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="40" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_IdentityAlphaNumeric40">
+    <xs:annotation>
+      <xs:documentation>String-ID, length 40</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="T_IdentityAlphaNumeric40_NULLABLE">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="T_IdentityAlphaNumeric40_WITH_NULL_FLAG">
+    <xs:simpleContent>
+      <xs:extension base="T_IdentityAlphaNumeric40_NULLABLE">
+        <xs:attribute ref="isNull" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="T_Name_NULLABLE">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="40" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_Name">
+    <xs:restriction base="T_Name_NULLABLE">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="T_Name_WITH_NULL_FLAG">
+    <xs:simpleContent>
+      <xs:extension base="T_Name_NULLABLE">
+        <xs:attribute ref="isNull" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="T_PhoneNumberAreaCode">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="5" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_PhoneNumberCountryCode">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="3" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_PhoneNumberLocal_NULLABLE">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="20" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_PhoneNumberLocal">
+    <xs:restriction base="T_PhoneNumberLocal_NULLABLE">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="T_PhoneNumberLocal_WITH_NULL_FLAG">
+    <xs:simpleContent>
+      <xs:extension base="T_PhoneNumberLocal_NULLABLE">
+        <xs:attribute ref="isNull" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="T_PostalCode_NULLABLE">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="15" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_PostalCode">
+    <xs:restriction base="T_PostalCode_NULLABLE">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="T_PostalCode_WITH_NULL_FLAG">
+    <xs:simpleContent>
+      <xs:extension base="T_PostalCode_NULLABLE">
+        <xs:attribute ref="isNull" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="T_ReasonCode">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="10" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_ReasonGroupCode">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="3" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_TaxGroupID">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="10" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_Price">
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="13" />
+      <xs:fractionDigits value="4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_ItemID">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="18" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_ItemID_Ext">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="128"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_RetailStoreID">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="10" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_ExternalBusinessUnitID_NULLABLE">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="40" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_ExternalBusinessUnitID">
+    <xs:restriction base="T_ExternalBusinessUnitID_NULLABLE">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="T_ExternalBusinessUnitID_WITH_NULL_FLAG">
+    <xs:simpleContent>
+      <xs:extension base="T_ExternalBusinessUnitID_NULLABLE">
+        <xs:attribute ref="isNull" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="T_Code10">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="10" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_Code20">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="20" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_Code4_NULLABLE">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_Code4">
+    <xs:restriction base="T_Code4_NULLABLE">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="T_Code4_WITH_NULL_FLAG">
+    <xs:simpleContent>
+      <xs:extension base="T_Code4_NULLABLE">
+        <xs:attribute ref="isNull" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="T_Code6">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="6" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_Code2_NULLABLE">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="2" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_Code2">
+    <xs:restriction base="T_Code2_NULLABLE">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="T_Code2_WITH_NULL_FLAG">
+    <xs:simpleContent>
+      <xs:extension base="T_Code2_NULLABLE">
+        <xs:attribute ref="isNull" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="T_Code1">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_Code3">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="3" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_MerchandiseHierarchyGroupID">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="15" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_MerchandiseHierarchyGroupID_Ext">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="40"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_MerchandiseHierarchyGroupIDQualifier">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="64"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_DescriptionShort_NULLABLE">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="255" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_DescriptionShort">
+    <xs:restriction base="T_DescriptionShort_NULLABLE">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="T_DescriptionShort_WITH_NULL_FLAG">
+    <xs:simpleContent>
+      <xs:extension base="T_DescriptionShort_NULLABLE">
+        <xs:attribute ref="isNull" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="T_Quantity">
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="16" />
+      <xs:fractionDigits value="3" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_Integer">
+    <xs:restriction base="xs:integer" />
+  </xs:simpleType>
+  <xs:simpleType name="T_DateCalendar">
+    <xs:restriction base="xs:date" />
+  </xs:simpleType>
+  <xs:complexType name="T_DateCalendar_WITH_NULL_FLAG">
+    <xs:simpleContent>
+      <xs:extension base="T_DateCalendar">
+        <xs:attribute name="isNull" type="xs:boolean" use="optional"
+          default="false" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="T_Code4External">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_BusinessUnitNumber">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="32" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_InternetURL_NULLABLE">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="64" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_InternetURL">
+    <xs:restriction base="T_InternetURL_NULLABLE">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="T_InternetURL_WITH_NULL_FLAG">
+    <xs:simpleContent>
+      <xs:extension base="T_InternetURL_NULLABLE">
+        <xs:attribute ref="isNull" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="T_Flag">
+    <xs:restriction base="xs:boolean" />
+  </xs:simpleType>
+  <xs:complexType name="T_Flag_WITH_NULL_FLAG">
+    <xs:simpleContent>
+      <xs:extension base="T_Flag">
+        <xs:attribute name="isNull" type="xs:boolean" use="optional"
+          default="false" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="T_Percent">
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="7" />
+      <xs:fractionDigits value="4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="T_Percent_WITH_NULL_FLAG">
+    <xs:simpleContent>
+      <xs:extension base="T_Percent">
+        <xs:attribute name="isNull" type="xs:boolean" use="optional"
+          default="false" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="T_DateTime">
+    <xs:restriction base="xs:dateTime" />
+  </xs:simpleType>
+  <xs:simpleType name="T_GlobalLocationNumber_NULLABLE">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="40" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_GlobalLocationNumber">
+    <xs:restriction base="T_GlobalLocationNumber_NULLABLE">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="T_GlobalLocationNumber_WITH_NULL_FLAG">
+    <xs:simpleContent>
+      <xs:extension base="T_GlobalLocationNumber_NULLABLE">
+        <xs:attribute ref="isNull" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="T_City_NULLABLE">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="40" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_City">
+    <xs:restriction base="T_City_NULLABLE">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="T_City_WITH_NULL_FLAG">
+    <xs:simpleContent>
+      <xs:extension base="T_City_NULLABLE">
+        <xs:attribute ref="isNull" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="T_PhoneNumberComplete_NULLABLE">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="32" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_PhoneNumberComplete">
+    <xs:restriction base="T_PhoneNumberComplete_NULLABLE">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="T_PhoneNumberComplete_WITH_NULL_FLAG">
+    <xs:simpleContent>
+      <xs:extension base="T_PhoneNumberComplete_NULLABLE">
+        <xs:attribute ref="isNull" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="T_CurrencyID_NULLABLE">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_CurrencyID">
+    <xs:restriction base="T_CurrencyID_NULLABLE">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="T_CurrencyID_WITH_NULL_FLAG">
+    <xs:simpleContent>
+      <xs:extension base="T_CurrencyID_NULLABLE">
+        <xs:attribute ref="isNull" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="T_Size">
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="9" />
+      <xs:fractionDigits value="2" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="T_Size_WITH_NULL_FLAG">
+    <xs:simpleContent>
+      <xs:extension base="T_Size">
+        <xs:attribute name="isNull" type="xs:boolean" use="optional"
+          default="false" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="T_Money">
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="16" />
+      <xs:fractionDigits value="5" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="T_Money_WITH_NULL_FLAG">
+    <xs:simpleContent>
+      <xs:extension base="T_Money">
+        <xs:attribute name="isNull" type="xs:boolean" use="optional"
+          default="false" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="T_BonusPoints">
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="13" />
+      <xs:fractionDigits value="4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="T_BonusPoints_WITH_NULL_FLAG">
+    <xs:simpleContent>
+      <xs:extension base="T_BonusPoints">
+        <xs:attribute name="isNull" type="xs:boolean" use="optional"
+          default="false" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="T_Password_NULLABLE">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="20" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_Password">
+    <xs:restriction base="T_Password_NULLABLE">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="T_Password_WITH_NULL_FLAG">
+    <xs:simpleContent>
+      <xs:extension base="T_Password_NULLABLE">
+        <xs:attribute ref="isNull" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="T_IdentityGTIN">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="40" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_Integer1">
+    <xs:restriction base="xs:int">
+      <xs:totalDigits value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_Integer2">
+    <xs:restriction base="xs:int">
+      <xs:totalDigits value="2" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_Integer3">
+    <xs:restriction base="xs:int">
+      <xs:totalDigits value="3" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_Time">
+    <xs:restriction base="xs:time" />
+  </xs:simpleType>
+  <xs:simpleType name="T_LineNumber">
+    <xs:restriction base="xs:int" />
+  </xs:simpleType>
+  <xs:simpleType name="T_IdentityAlphaNumeric">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="20" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_IdentityUUID">
+    <xs:annotation>
+      <xs:documentation>String-ID, length 32</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="32" />
+    </xs:restriction>
+  </xs:simpleType>
+  <!-- Import domains specific for operator import -->
+  <xs:simpleType name="PeripheralSystemTypeEnumeration">
+    <xs:restriction base="xs:NMTOKEN">
+      <xs:enumeration value="Mobile" />
+      <xs:enumeration value="Web" />
+      <xs:enumeration value="POS" />
+      <xs:enumeration value="SCALE" />
+      <xs:enumeration value="RVM" />
+      <xs:enumeration value="ESL" />
+      <xs:enumeration value="LPP" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EnumerationExtension">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Z][A-Z]*" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TypeCodeExtension">
+    <xs:restriction base="EnumerationExtension" />
+  </xs:simpleType>
+  <xs:simpleType name="T_PeripheralSystemType">
+    <xs:union memberTypes="PeripheralSystemTypeEnumeration TypeCodeExtension" />
+  </xs:simpleType>
+  <!-- Applicaton types -->
+  <xs:simpleType name="T_ChangeType">
+    <xs:annotation>
+      <xs:documentation>enumeration of local import operations
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:NMTOKEN">
+      <xs:enumeration value="MODIFY" />
+      <xs:enumeration value="DELETE" />
+      <xs:enumeration value="DIRECT" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_OperatorChangeType">
+    <xs:annotation>
+      <xs:documentation>enumeration of import operations for operator
+        import
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:NMTOKEN">
+      <xs:enumeration value="NEW" />
+      <xs:enumeration value="MOD" />
+      <xs:enumeration value="DEL" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_GlobalChangeType">
+    <xs:annotation>
+      <xs:documentation> enumeration of global import operations
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:NMTOKEN">
+      <xs:enumeration value="COMPARE" />
+      <xs:enumeration value="INITIALIZE" />
+      <xs:enumeration value="MODIFY" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_PriceType">
+    <xs:annotation>
+      <xs:documentation> enumeration of price type</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:NMTOKEN">
+      <xs:enumeration value="00" />
+      <xs:enumeration value="01" />
+      <xs:enumeration value="PG" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_SupplierTypeCodeType">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="2" />
+      <xs:enumeration value="00" />
+      <xs:enumeration value="01" />
+      <xs:enumeration value="02" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="T_SupplierTypeCodeType_WITH_NULL_FLAG">
+    <xs:simpleContent>
+      <xs:extension base="T_SupplierTypeCodeType">
+        <xs:attribute name="isNull" type="xs:boolean" use="optional"
+          default="false" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="T_TaxRateClassCode">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_ReceiptPrintCode">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="2" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_ExternalPackageID">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="20" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_UOMCode">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_SupplierID">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="40" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_MhgID">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="15" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_CustomFieldRestriction">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="1000" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="T_CustomFieldRestriction_WITH_NULL_FLAG">
+    <xs:simpleContent>
+      <xs:extension base="T_CustomFieldRestriction">
+        <xs:attribute name="isNull" type="xs:boolean" use="optional" default="false" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="TenantID">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="20"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_IdentityCharacteristicGK">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="30"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="T_IdentityCharacteristicValueGK">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="70"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

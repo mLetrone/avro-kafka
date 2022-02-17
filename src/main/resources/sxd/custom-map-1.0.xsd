@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns="http://www.gk-software.com/com.gk-software.swee/server/mod-common/custom-map-1.0"
+  xmlns:tns="http://www.gk-software.com/com.gk-software.swee/server/mod-common/custom-map-1.0"
+  targetNamespace="http://www.gk-software.com/com.gk-software.swee/server/mod-common/custom-map-1.0"
+  elementFormDefault="qualified"
+>
+
+  <xs:element name="custom-map" type="customMapType">
+    <xs:unique name="entryKeyUnique">
+      <xs:selector xpath="tns:entry"/>
+      <xs:field xpath="@key"/>
+    </xs:unique>
+  </xs:element>
+
+  <xs:complexType name="customMapType">
+    <xs:sequence>
+      <xs:element name="entry" type="customMapMapEntryType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="customMapEntryType">
+  	<xs:choice minOccurs="0" maxOccurs="1">
+  		<xs:element name="map" type="customMapType"/>
+  		<xs:element name="collection" type="customMapCollectionType"/>
+    </xs:choice>
+    <xs:attribute name="type" type="xs:string" use="optional"/>
+    <xs:attribute name="value" type="xs:string" use="optional"/>
+    <xs:attribute name="isNull" type="xs:boolean" use="optional" default="false" />
+  </xs:complexType>
+
+  <xs:complexType name="customMapMapEntryType">
+    <xs:complexContent>
+    	<xs:extension base="customMapEntryType">
+		    <xs:attribute name="key" type="xs:string" use="required"/>
+		    <xs:attribute name="keyType" type="xs:string" use="optional" default="String"/>
+    	</xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="customMapCollectionType">
+    <xs:sequence>
+    	<xs:element name="entry" type="customMapEntryType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
